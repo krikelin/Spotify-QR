@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/background_color" android:gravity="center">
+
+   
+    <LinearLayout android:layout_height="fill_parent" android:gravity="center" android:layout_width="fill_parent" android:layout_weight="1" android:padding="12dp" android:orientation="vertical" android:id="@+id/linearLayout2">
+
+      
+
+		<TextView  android:textAppearance="?android:attr/textAppearanceLarge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_no_result_found" android:gravity="center"/>
+		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_no_result_lookup" android:gravity="center"/>
+ 
+	 </LinearLayout>
+	<ListView android:id="@android:id/list" android:layout_width="10pt" android:layout_height="1pt" android:visibility="gone">
+	  
+	</ListView>
+
+	<LinearLayout
+	    android:id="@+id/linearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="48dp"
+	    android:background="#77AD00" android:gravity="center">
+
+		<Button
+		    android:id="@+id/btnFind"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Find manually" />
+
+	</LinearLayout>
+
+</LinearLayout>  

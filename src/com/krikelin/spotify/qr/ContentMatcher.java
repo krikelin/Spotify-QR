@@ -25,7 +25,7 @@ import android.os.AsyncTask;
  */
 public class ContentMatcher  extends AsyncTask<String,String,String>{
 	public interface ContentEventHandler {
-		public void onFinish(String uri);
+		public void onFinish(String inputData, String uri,String closestMatchArtist,String closestMatchAlbum);
 	}
 	private ContentEventHandler onFinish;
 	public ContentEventHandler getOnFinish() {
@@ -36,6 +36,7 @@ public class ContentMatcher  extends AsyncTask<String,String,String>{
 	}
 	@Override
 	protected String doInBackground(String... params) {
+		this.inputData = params[0];
 		if(params[0].startsWith("spotify:")){
 			return params[0];
 		}
@@ -73,7 +74,21 @@ public class ContentMatcher  extends AsyncTask<String,String,String>{
 			e.printStackTrace();
 		}
 		// TODO Auto-generated method stub
-		
+		// Try lookup the UPC against the own database
+		try {
+			X = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			
+			URL D = new URL(ResolveQR.WEB_SERVICE_BASE_URL+"ean/?ean="+params[0]);
+			Document Ddf2 = X.parse(new InputSource(D.openStream()));
+			NodeList objects = Ddf2.getElementsByTagName("object");
+			if(objects.getLength() > 0){
+				Element object = (Element)objects.item(0);
+				String uri = object.getAttribute("href");
+				return uri;
+			}
+		}catch(Exception e){
+			
+		}
 		try {
 			
 			X = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -86,6 +101,8 @@ public class ContentMatcher  extends AsyncTask<String,String,String>{
 			// Split track name
 			String title_ = title.split(" - ",2)[1].trim();
 			String artist_ = title.split(" - ",2)[0].trim();
+			this.closestMatchAlbum=title_;
+			this.closestMatchArtist=artist_;
 			 D = new URL("http://ws.spotify.com/search/1/album?q=album:\""+URLEncoder.encode(title_).replace("+","%20")+"\" artist:\""+URLEncoder.encode(artist_).replace("+","%20")+"\"	");
 			 X = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			Ddf2 = X.parse(new InputSource(D.openStream()));
@@ -119,6 +136,7 @@ public class ContentMatcher  extends AsyncTask<String,String,String>{
 		} catch (Exception e){
 			e.printStackTrace();
 		}
+		
 		try {
 			X = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			
@@ -146,12 +164,15 @@ public class ContentMatcher  extends AsyncTask<String,String,String>{
 		
 		return null;
 	}
+	protected String inputData = "";
+	protected String closestMatchArtist = "";
+	protected String closestMatchAlbum = "";
 	@Override
 	protected void onPostExecute(String result) {
 		// TODO Auto-generated method stub
 		super.onPostExecute(result);
 		if(getOnFinish()!= null){
-			getOnFinish().onFinish((result));
+			getOnFinish().onFinish(inputData, (result),closestMatchArtist,closestMatchAlbum);
 			
 		}
 	}

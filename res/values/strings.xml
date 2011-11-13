@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, SpotiQRActivity!</string>
     <string name="app_name">Spotify QR</string>
-
+	<string name="search_hint">Find on Spotify</string>
+	<string name="label_no_result_found">No results has been found for EAN %d </string>
+	<string name="label_no_result_lookup">Tap on the screen to look it up manually, it will be stored in an database so other people who scan the same cd will automatically find it. Isn"t great?</string>
 </resources> 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item android:state_active="true">
+	    <nine-patch android:src="@drawable/spotify_menuitem_selected"></nine-patch>
+	</item>
+	 <item android:state_pressed="true">
+	    <nine-patch android:src="@drawable/spotify_menuitem_pressed"></nine-patch>
+	</item>
+    <item>
+	    <nine-patch android:src="@drawable/spotify_menuitem_normal"></nine-patch>
+	</item>
+    
+
+</selector> 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="WB">
+		<item name="android:background">@drawable/spotify_app_header</item>
+	</style>
+	<style name="PropView">
+		<item name="android:background">#444444</item>
+		<item name="android:dividerHeight">2px</item>
+		<item name="android:divider">@drawable/divider</item>   
+	</style>
+	<style name="textStyle">
+	    <item name="android:shadowDx">0</item>
+		<item name="android:shadowDy">1</item>
+		<item name="android:shadowRadius">1</item>
+		<item name="android:shadowColor">@android:color/black</item>
+	</style>
+	<style name="ListView">
+		<item name="android:background">@color/background_color</item>
+		<item name="android:foreground">#FFFFFF</item>
+		<item name="android:dividerHeight">2px</item>
+		<item name="android:listSelector">@drawable/menuitem</item>
+		<item name="android:divider">@drawable/divider</item>  
+		
+		<item name="android:text">@style/textStyle</item>
+	</style>
+	<style name="Spotify" parent="@android:style/Theme.Black">
+		<item name="android:windowTitleBackgroundStyle">@style/WB</item>
+	
+		<item name="android:listViewStyle">@style/ListView</item>
+		<!--  <item name="android:background">#444444</item> -->
+	</style>
+	<style name="spotify_essens">
+	    <item name="android:textColor">#111111</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">0</item>
+	    <item name="android:shadowDy">-2</item>
+	    <item name="android:shadowRadius">3</item>
+	</style>
+</resources>

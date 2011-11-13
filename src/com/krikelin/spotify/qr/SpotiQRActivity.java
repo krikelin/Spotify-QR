@@ -9,10 +9,10 @@ public class SpotiQRActivity extends SWActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     //   ContentMatcher cm = new ContentMatcher();
-     //  cm.setOnFinish(this);
-       // cm.execute("828768608227");
-      IntentIntegrator.initiateScan(this, "Barcode scanner is needed in order to get this working", "Do you want to install it", "Yes", "no");
+       ContentMatcher cm = new ContentMatcher();
+      cm.setOnFinish(this);
+       cm.execute("73145170072");
+     // IntentIntegrator.initiateScan(this, "Barcode scanner is needed in order to get this working", "Do you want to install it", "Yes", "no");
         
     }
 }
